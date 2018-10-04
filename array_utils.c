@@ -40,6 +40,16 @@ int containsWithin(const int *arr, int size, int x, int i, int j) {
 int * paddedCopy(const int *arr, int oldSize, int newSize) {
 
 
+  arr = makeCopy(arr, oldSize)
+
+  if (oldSize > newSize) {
+    arr[newSize] = \0;
+  } else if (oldSize < newSize) {
+    int *arr = NULL;
+    arr = (int *) malloc(sizeof(int) * size);
+      for (int i = 0; i < size; i++) {
+      arr[i] = (i+1);
+  }
 
 
 
