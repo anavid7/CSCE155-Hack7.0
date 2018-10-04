@@ -13,12 +13,14 @@ int main(int argc, char const *argv[]) {
   int value = 7;
   int i = 6;
   int j = 15;
+  int newSize = 30;
   arr = (int *) malloc(sizeof(int) * size);
     for (int i = 0; i < size; i++) {
     arr[i] = (i+1);
   }
   double containsTest01 = contains(arr, size, value);
   double containsWithinTest01 = containsWithin(arr, size, value, i, j);
+  double paddedCopyTest01 = paddedCopy(arr, size, newSize)
 
 
   printf("contains test:\n");
@@ -34,6 +36,9 @@ int main(int argc, char const *argv[]) {
   } else {
     printf("the value is NOT in the char array within the values\n");
   }
+
+  printf("padded copy test:\n");
+  
 
   return 0;
 }

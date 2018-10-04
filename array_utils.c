@@ -30,29 +30,24 @@ int containsWithin(const int *arr, int size, int x, int i, int j) {
     if (x == arr[i]) {
       return 1;
     }
-    return 0;
   }
+return 0;
 }
 
 
 
 
-int * paddedCopy(const int *arr, int oldSize, int newSize) {
-
-
-  arr = makeCopy(arr, oldSize)
-
+int *paddedCopy(int *arr, int oldSize, int newSize) {
+ int *arrDeep = NULL;
   if (oldSize > newSize) {
-    arr[newSize] = \0;
+    arrDeep = makeCopy(arr, newSize);
   } else if (oldSize < newSize) {
-    int *arr = NULL;
-    arr = (int *) malloc(sizeof(int) * size);
-      for (int i = 0; i < size; i++) {
-      arr[i] = (i+1);
+    arrDeep = makeCopy(arr, newSize);
+    for (int i = (newSize - oldSize); i < newSize; i++) {
+      arrDeep[i] = 0;
+    }
   }
-
-
-
+return arrDeep;
 }
 //
 //
