@@ -1,3 +1,10 @@
+/**
+* Authors: David Ryan, Colin siple, Victor Nguyen
+* Date Modified: 10/5/2018
+* Class: CSCE155e
+* Professor: Dr. Chris Bourke
+* NUID: 47810715
+*/
 
 /**
  * A structure that represents a single pixel value using
@@ -28,20 +35,26 @@ void saveImage(const char *filePath, Pixel **image, int height, int width);
 
 /**
  * TODO: add documentation
+ * Produces a deep copy array of a given image with the same height and width
  */
 Pixel ** copyImage(Pixel **image, int height, int width);
 
 /**
  * TODO: add documentation
+ * Takes the image where the rows are reversed, otherwise the same
  */
 void flipHorizontal(Pixel **image, int height, int width);
 
 /**
  * TODO: add documentation
+ * Like the function above, takes the image array and reverses columns, otherwise the same
  */
 void flipVertical(Pixel **image, int height, int width);
 
 /**
  * TODO: add documentation
+ * Create a new array where, height = width, width = height
+ * First column becomes first row and so on
+ * The bottom left becomes the top left and so on
  */
 Pixel ** rotateClockwise(Pixel **image, int height, int width);

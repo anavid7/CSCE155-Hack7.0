@@ -60,28 +60,66 @@ void saveImage(const char *fileName, Pixel **image, int height, int width) {
 }
 
 Pixel ** copyImage(Pixel **image, int height, int width) {
-
-  int *copyHight = (int *)malloc(sizeof(int) * hight);
-  int *copyWidth = (int *)malloc(sizeof(int) * Width);
-    for(int i = 0; i < hight; i++) {
-      copyHight[i] = hight[i];
-      for(int i = 0; i < width; i++) {
-      copyWidth[i] = width[i];
-      }
-    }
-return
+  Pixel **newImage = (Pixel **) malloc(sizeof(Pixel) * height);
+  //TODO: Create an empty matrix for each row
+  for(int i = 0; i < height; i++) {
+	newImage[i] = (Pixel *) malloc(sizeof(Pixel) * width);
+  }
+  //TODO: Iterate over each column, within those, iterate the row
+  for(int i = 0; i < height; i++) {
+	for(int j = 0; j < width; j++) {
+	  newImage[i][j] = image[i][j];
+	}
+  }
+  return newImage;
 }
 
 void flipHorizontal(Pixel **image, int height, int width) {
-  //TODO: implement
+  //Create a temp array from which to draw reverse values from
+  Pixel **ptrImage = copyImage(image, height, width);
+  //Value from which the reverse is drawn
+  int k = 0;
+  for(int i = 0; i < height; i++) {
+	for(int j = (width - 1); j >= 0; j--) {
+      image[i][k] = ptrImage[i][j];
+	  k++;
+	}
+	k = 0;
+  }
   return;
 }
 
 void flipVertical(Pixel **image, int height, int width) {
-  //TODO: implement
+  Pixel **ptrImage = copyImage(image, height, width);
+  int k = 0;
+  for(int i = 0; i < width; i++) {
+	for(int j = (height - 1); j >= 0; j--) {
+	  image[k][i] = ptrImage[j][i];
+	  k++;
+	}
+	k = 0;
+  }
   return;
 }
 
 Pixel ** rotateClockwise(Pixel **image, int height, int width) {
-  //TODO: implement
+  //Create a new array with swapped dimensions
+  Pixel **imageNaught = (Pixel **) malloc(sizeof(Pixel) * width);
+  for(int i = 0; i < width; i++) {
+	imageNaught[i] = (Pixel *) malloc(sizeof(Pixel) * height);
+  }
+  //Use a copy of the base image
+  Pixel **imgAleph = copyImage(image, height, width);
+  int newHeight = width;
+  int newWidth = height;
+  //More index variables for assigning points of array
+  int unIndex = 0;
+  for(int i = 0; i < newHeight; i++) {
+	for(int j = 0; j < newWidth; j++) {
+	  imageNaught[i][j] = imgAleph[height - 1 - unIndex][i];
+	  unIndex++;
+	}
+	unIndex = 0;
+  }
+  return imageNaught;
 }

@@ -7,9 +7,13 @@
 int main(int argc, char **argv) {
 
   int h, w;
-  Pixel **image = loadImage("yourImage.jpeg", &h, &w);
+  Pixel **image = loadImage("engineer.jpg", &h, &w);
 
-  saveImage("copy.jpg", image, h, w);
+
+  Pixel **img1 = copyImage(image, h, w);
+  saveImage("engineerCopy.jpg", img1, h, w);
+
+
 
   return 0;
 }
